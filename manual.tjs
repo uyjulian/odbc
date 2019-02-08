@@ -1,0 +1,64 @@
+/**
+ * 擬似コードによるマニュアル
+ */
+
+/**
+ * ODBC クラス
+ */
+
+class ODBC {
+  // QUERYのりザルトタイプ
+  qrtArry;              // 配列の配列形式で結果を返します。0行目は項目名の配列、それ以降に値の配列が格納されます。
+  qrtDictionary: 　　　　// 辞書の配列形式で結果を返します。項目名をキーにした辞書の形式になっています。
+  qrtSingleColumnArray; // 結果の0列目のみをまとめた配列を返します。
+
+  /**
+   * データベースに接続します。
+   * @param connectionStr 接続文字列。
+   * @return 接続に成功したら、完全な接続文字列を返す。次回以降の接続に使用出来る。
+   */
+  function connect(connectionStr = "");
+
+  /**
+   * データベースとの接続を切断します。
+   */
+  function disconnect();
+
+  /**
+   * データベースへQUERYを発行します。
+   * @param sqlString 任意のSQL文
+   * @param queryResultType リザルトの形式
+   * @return select時は、結果が配列の配列で返る。なお、0行目は列の名前の配列になる。
+   * DBの項目の値は、「整数」「小数」「文字列」「日時」がそれぞれ吉里吉里の
+   * Integer, Real, String, Date 型で返ってきます。
+   */
+  function query(sqlString, queryResultType = ODBC.qrtArray);
+
+  /** 
+   * 文字列をSQLに埋め込める形にエスケープします。
+   * @param str エスケープする文字列
+   * @param func 文字列を結合する関数名
+   * @param delimiter 複数の文字列を結合するデリミタ
+   * @return エスケープされた文字列
+   */
+  function escapeString(str, func = "", delimiter = " + ");
+
+  /** 
+   * 文字列をDB毎に適合した設定で、SQLに埋め込める形にエスケープします。
+   * @param str エスケープする文字列
+   * @return エスケープされた文字列
+   */
+  function escapeStringAccess(sqlString);
+  function escapeStringSQLServer(sqlString);
+  function escapeStringOracle(sqlString);
+  function escapeStringMySQL(sqlString);
+  function escapeStringPostgreSQL(sqlString);
+
+  /**
+   * 吉里吉里のDate型をSQLに埋め込める形にエンコードします。
+   * @param date 吉里吉里の Dateオブジェクト
+   * @return エンコードされた文字列
+   */
+  function encodeDate(date);
+};
+
