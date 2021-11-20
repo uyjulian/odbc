@@ -54,7 +54,7 @@ tTJSVariant createDictionary(void)
     if (rc == SQL_ERROR)                                \
       {                                                 \
         WCHAR buf[1024];                                \
-        swprintf_s(buf, 1023, L"Error in " L#x L"\n");  \
+        swprintf_s(buf, 1023, L"Error in " TJS_W(#x) L"\n");  \
         TVPThrowExceptionMessage(buf);                  \
       }                                                 \
   }
@@ -611,7 +611,7 @@ public:
     tTJSVariant result;
     resultArrayObj.FuncCall(0, L"join", &joinHint, &result, delimiter);
 
-    return func + L"(" + result + L")";
+    return func + ttstr(L"(") + ttstr(result) + ttstr(L")");
   }
 
   //----------------------------------------------------------------------
