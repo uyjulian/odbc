@@ -14,7 +14,7 @@
 //----------------------------------------------------------------------
 // Static Variables
 //----------------------------------------------------------------------
-static tjs_uint32 addHint, joinHint, getYearHint, getMonthHint, getDateHint, getHoursHint, getMinutesHint, getSecondsHint, countHint, shiftHint;
+static tjs_uint32 addHint, joinHint, getYearHint, getMonthHint, getDateHint, getHoursHint, getMinutesHint, getSecondsHint, shiftHint;
 
 //----------------------------------------------------------------------
 // Utility Functions
